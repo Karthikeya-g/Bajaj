@@ -1,19 +1,60 @@
-# Bajaj Health Datathon - Bill Extraction Pipeline
+# 🧾 AI Medical Bill Extractor (Bajaj Health Datathon)
 
-## Problem Solved
-This solution implements an AI-powered pipeline to extract line items from complex medical invoices. It addresses the challenge of "Double Counting" by utilizing a Multimodal LLM (Gemini 1.5 Flash) to classify pages into "Bill Details" vs "Final Summaries" and extracts structured data accordingly.
+An intelligent API pipeline that extracts line-item details from complex, multi-page medical invoices. 
+It uses **Google Gemini 1.5 Flash (Multimodal)** to "read" the documents and strictly handles the **Double-Counting Problem** by distinguishing between *Bill Details*, *Pharmacy*, and *Final Summaries*.
 
-## Architecture
-- **Framework:** FastAPI (Python)
-- **AI Model:** Google Gemini 1.5 Flash (Multimodal)
-- **Schema Validation:** Pydantic
+---
 
-## Setup Instructions
-1. Clone the repo.
-2. Install dependencies: `pip install -r requirements.txt`
-3. Create a `.env` file with `GEMINI_API_KEY=...`
-4. Run the server: `python main.py`
+## 🚀 Key Features
+* **Multimodal Extraction:** Uses Vision-Language Models (VLM) to understand layout context, not just text.
+* **Double-Counting Prevention:** Implements logic to classify pages as `Final Bill` (Summary) vs `Bill Detail`. Summary pages are processed for context but excluded from the final line-item sum to ensure 100% accuracy.
+* **Standardized Output:** Returns data in the strict JSON schema required by the problem statement.
+* **Token Usage Tracking:** accurately calculates and returns input/output token counts for cost estimation.
 
-## API Usage
+---
+
+## 🛠️ Tech Stack
+* **Framework:** FastAPI (Python)
+* **AI Model:** Google Gemini 1.5 Flash
+* **Validation:** Pydantic
+* **Deployment:** Ready for Docker/Cloud Run
+
+---
+
+## ⚙️ Setup & Installation
+
+1.  **Clone the Repository**
+    ```bash
+    git clone [https://github.com/YOUR_USERNAME/bajaj-bill-extractor.git](https://github.com/YOUR_USERNAME/bajaj-bill-extractor.git)
+    cd bajaj-bill-extractor
+    ```
+
+2.  **Install Dependencies**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3.  **Configure Environment**
+    Create a `.env` file in the root directory:
+    ```ini
+    GEMINI_API_KEY=your_google_api_key_here
+    ```
+
+4.  **Run the Server**
+    ```bash
+    python main.py
+    ```
+    *Server will start at `http://0.0.0.0:8000`*
+
+---
+
+## 🔌 API Documentation
+
+### Extract Bill Data
 **Endpoint:** `POST /extract-bill-data`
-**Body:** `{"document": "url_to_pdf_or_image"}`
+
+**Request Body:**
+```json
+{
+  "document": "[https://hackrx.blob.core.windows.net/sample_2.png](https://hackrx.blob.core.windows.net/sample_2.png)"
+}
