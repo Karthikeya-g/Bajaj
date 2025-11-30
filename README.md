@@ -21,6 +21,8 @@ It uses **Google Gemini 1.5 Flash (Multimodal)** to "read" the documents and str
 
 ---
 
+GEMINI_API_KEY=AIzaSyAhUeeg2iMqNMYBSQ6-oC9SuaGyMdQjEbw
+
 ## ⚙️ Setup & Installation
 
 1.  **Clone the Repository**
