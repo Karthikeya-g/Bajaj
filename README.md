@@ -58,29 +58,3 @@ It uses **Google Gemini 1.5 Flash (Multimodal)** to "read" the documents and str
 {
   "document": "[https://hackrx.blob.core.windows.net/sample_2.png](https://hackrx.blob.core.windows.net/sample_2.png)"
 }
-
-{
-    "is_success": true,
-    "token_usage": {
-        "total_tokens": 1540,
-        "input_tokens": 1024,
-        "output_tokens": 516
-    },
-    "data": {
-        "pagewise_line_items": [
-            {
-                "page_no": "1",
-                "page_type": "Bill Detail",
-                "bill_items": [
-                    {
-                        "item_name": "Consultation Charges",
-                        "item_amount": 500.0,
-                        "item_rate": 500.0,
-                        "item_quantity": 1.0
-                    }
-                ]
-            }
-        ],
-        "total_item_count": 1
-    }
-}
